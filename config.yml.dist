@@ -1,0 +1,14 @@
+version: 1
+version_format: '%%s?version=%%s'
+base_path: ~
+base_urls:
+    http: ~
+    ssl: ~
+packages:
+    app:
+        base_path: ~
+    img:
+        base_path: ~
+        base_urls: ~
+        version: ~
+        version_format: ~

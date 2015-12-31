@@ -1,0 +1,38 @@
+{
+    "name": "fadoe/bolt-symfony-asset-extension",
+    "description": "Add asset functionality to bolt",
+    "type": "bolt-extension",
+    "keywords" : [ "twig", "symfony", "asset" ],
+    "require": {
+        "bolt/bolt": ">=2.0.0,<3.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.8"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Falk Döring",
+            "email": "kontakt@falks-datenbude.de"
+        }
+    ],
+    "minimum-stability" : "dev",
+    "prefer-stable" : true,
+    "autoload": {
+        "files": [
+            "init.php",
+            "Extension.php"
+        ],
+        "psr-4": {
+            "Symfony\\Component\\Asset\\": "lib/Asset",
+            "Bolt\\Extension\\FaDoe\\SymfonyAsset\\": "src",
+            "Bolt\\Extension\\FaDoe\\SymfonyAsset\\Tests\\": "tests"
+        }
+    },
+    "autoload-dev" : {
+        "psr-4" : {
+            "Bolt\\Extension\\FaDoe\\SymfonyAsset\\Tests\\" : "tests/",
+            "Bolt\\Tests\\" : "vendor/bolt/bolt/tests/phpunit/unit/"
+        }
+    }
+}
