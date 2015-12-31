@@ -20,12 +20,11 @@
     "prefer-stable" : true,
     "autoload": {
         "files": [
-            "init.php",
-            "Extension.php"
+            "init.php"
         ],
         "psr-4": {
             "Symfony\\Component\\Asset\\": "lib/Asset",
-            "Bolt\\Extension\\FaDoe\\SymfonyAsset\\": "src",
+            "Bolt\\Extension\\FaDoe\\SymfonyAsset\\": [ "src", "" ],
             "Bolt\\Extension\\FaDoe\\SymfonyAsset\\Tests\\": "tests"
         }
     },
