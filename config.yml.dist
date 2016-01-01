@@ -1,14 +1,36 @@
-version: 1
-version_format: '%%s?version=%%s'
+# default values
+version: ~
+version_format: ~
 base_path: ~
-base_urls:
-    http: ~
-    ssl: ~
-packages:
-    app:
-        base_path: ~
-    img:
-        base_path: ~
-        base_urls: ~
-        version: ~
-        version_format: ~
+base_urls: ~
+packages: ~
+
+# examples
+# use static version with parameter "?version=1"
+
+#version: 1
+#version_format: "%s?version=%s"
+#base_path: ~
+#base_urls: ~
+#packages: ~
+
+# add versioning for 'img' package
+#version: ~
+#version_format: ~
+#base_path: ~
+#base_urls: ~
+#packages:
+#    img:
+#        version: 1
+#        version_format: "%s?v=%s"
+#        base_path: 'image'
+#        base_urls: ~
+
+# use differend media servers by schema
+#version: 1
+#version_format: ~
+#base_path: ~
+#base_urls:
+#    - 'http://media.example.com'
+#    - 'https://media.example.com'
+#packages: ~
