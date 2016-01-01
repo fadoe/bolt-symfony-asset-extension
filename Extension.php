@@ -8,6 +8,11 @@ use Symfony\Component\Asset\Packages;
 
 class Extension extends BaseExtension
 {
+    /**
+     * @var PackageFactory
+     */
+    private $packageFactory;
+
     public function initialize()
     {
         /**
@@ -27,6 +32,9 @@ class Extension extends BaseExtension
         );
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return "SymfonyAsset";
@@ -39,7 +47,7 @@ class Extension extends BaseExtension
     {
         $version = $this->config['version'];
         $versionFormat = $this->config['version_format'];
-        $baseUrl = $this->config['base_url'];
+        $baseUrl = $this->config['base_urls'];
         $basePath = $this->config['base_path'];
         $packages = new Packages();
 
@@ -50,10 +58,10 @@ class Extension extends BaseExtension
         foreach ($this->config['packages'] as $name => $packageConfig) {
             $version = $packageConfig['version'];
             $versionFormat = $packageConfig['version_format'];
-            $baseUrl = $packageConfig['base_url'];
+            $baseUrl = $packageConfig['base_urls'];
             $basePath = $packageConfig['base_path'];
 
-            $package = $this->getPackageFactory()->createService($version, $versionFormat, $baseUrl, $basePath);
+            $package = $this->getPackageFactory()->createService($version, $versionFormat, $basePath, $baseUrl);
 
             $packages->addPackage($name, $package);
         }
@@ -61,10 +69,16 @@ class Extension extends BaseExtension
         return $packages;
     }
 
+    /**
+     * @return PackageFactory
+     */
     private function getPackageFactory()
     {
-        $requestStack = $this->app['request_stack'];
+        if (null === $this->packageFactory) {
+            $requestStack = $this->app['request_stack'];
+            $this->packageFactory = new PackageFactory($requestStack);
+        }
 
-        return new PackageFactory($requestStack);
+        return $this->packageFactory;
     }
 }
