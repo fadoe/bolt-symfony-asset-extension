@@ -55,7 +55,7 @@ class Extension extends BaseExtension
 
         $packages->setDefaultPackage($defaultPackage);
 
-        foreach ($this->config['packages'] as $name => $packageConfig) {
+        foreach ((array)$this->config['packages'] as $name => $packageConfig) {
             $version = $packageConfig['version'];
             $versionFormat = $packageConfig['version_format'];
             $baseUrl = $packageConfig['base_urls'];
